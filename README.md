@@ -1,11 +1,11 @@
 #  Real time Fraud Prevention and Visualisation using Amazon Fraud Detector
 
   
-This repository accompanies the [Real time Fraud Prevention and Visualisation using Amazon Fraud Detector](https://aws.amazon.com/blogs/big-data/automating-bucketing-of-streaming-data-using-amazon-athena-and-aws-lambda/) blog post. It contains **one** [AWS Cloudformation](https://aws.amazon.com/cloudformation/) template. 
+This repository accompanies the [Real time Fraud Prevention and Visualisation using Amazon Fraud Detector](https://aws.amazon.com/blogs/big-data/) blog post. It contains **one** [AWS Cloudformation](https://aws.amazon.com/cloudformation/) template. 
 
 The template deploys:
 1. Sample transaction producer running as an [AWS Lambda Function](https://aws.amazon.com/lambda/). The function is scheduled to run every minute generating 30 transactions per minute.
-2. [Amazon MSK](https://aws.amazon.com/msk/) cluster, that contains 2 topics with default names of *transactions* and *processed_transactions*. Both topics will be automatically created by the producer and the stream processor.
+2. [Amazon Managed Streaming for Apache Kafka (MSK)](https://aws.amazon.com/msk/) cluster, that contains 2 topics with default names of *transactions* and *processed_transactions*. Both topics will be automatically created by the producer and the stream processor.
 3. PyFlink stream processing job that runs as an [Amazon Kinesis Data Analytics](https://aws.amazon.com/kinesis/data-analytics/). The job processes each transaction as soon as it is written to the *transactions* (input) topic, invokes [Amazon Fraud Detector](https://aws.amazon.com/fraud-detector/) APIs ([GetEventPrediction](https://docs.aws.amazon.com/frauddetector/latest/api/API_GetEventPrediction.html)) in real time to generate fraud predictions and writes the outcome to *processed_transactions* (output) topic.
 4. Consumer Lambda function that the reads data from *processed_transactions* topic and sends email notifications for blocked transactions.
 5. Sink Kafka connector running on [MSK Connect](https://aws.amazon.com/msk/features/msk-connect/) that reads processed transactions from *processed_transactions* topic and sinks the data to an OpenSearch index. Allowing us to visualise the transactions in real time.
