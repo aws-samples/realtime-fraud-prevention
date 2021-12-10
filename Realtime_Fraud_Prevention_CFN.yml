@@ -43,7 +43,7 @@ Parameters:
   OpenSearchMasterPassword:
     Type: String
     Description: Opensearch Master Password
-    #NoEcho: TRUE
+    NoEcho: TRUE
 
 # Resources
 Resources:
