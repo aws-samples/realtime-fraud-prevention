@@ -215,7 +215,7 @@ curl -X POST <OpenSearch_dashboard_link>/auth/login \
 
 
 
-3. Run the following command that will import the dashboards
+4. Run the following command that will import the dashboards
 
 Replace:
 
