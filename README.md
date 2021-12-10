@@ -122,16 +122,21 @@ aws s3 sync ./Artifacts/ s3://<S3_Bucket_name>
 
 ## Deploy solution
 
-1. Run the following command to deploy the CloudFormation template
+There are 2 options to deploy the solution:
+1. Using AWS Console
+    * Follow Build and visualise Realtime Fraud Prevention system using Amazon Fraud Detector.
+3. Using AWS CLI
+    * Run the following command to deploy the CloudFormation template
 
 Replace:
 
-* **<S3_Bucket_name>** --> The bucket you created earlier
-* **<Amazon_Fraud_Detector_Entity_Type>** --> Entity type name in Amazon Fraud Detector. E.g *customer*
-* **<Amazon_Fraud_Detector_Event_Name>** --> Event type name in Amazon Fraud Detector. E.g *transaction*
-* **<Amazon_Fraud_Detector_Name>** --> Entity type name in Amazon Fraud Detector. E.g *transaction_event*
+* **<S3_Bucket_name>** --> The bucket you created in the upload solution artifacts step above.
+* The Amazon Fraud Detector Model Output Parameters created following ([requirement #3](https://github.com/aws-samples/realtime-fraud-prevention/blob/main/README.md#general-requirements) above)
+    * **<Amazon_Fraud_Detector_Entity_Type>** --> Entity type name in Amazon Fraud Detector. E.g *customer*
+    * **<Amazon_Fraud_Detector_Event_Name>** --> Event type name in Amazon Fraud Detector. E.g *transaction*
+    * **<Amazon_Fraud_Detector_Name>** --> Entity type name in Amazon Fraud Detector. E.g *transaction_event*
 * **<MSK_Input_Topic_Name>** --> Input Kafka topic name. E.g *transactions*
-* **<MSK_Output_Topic_Name>** --> Output Kafka topic name. E.g *processed_transactions*. **Use the default name if you are planning on using the pre-created dashboard.**
+* **<MSK_Output_Topic_Name>** --> Output Kafka topic name. E.g *processed_transactions*. **Use the default name if you are planning to use the pre-created dashboard.**
 * **<Email_Address_For_Notifications>** --> Email to receive email notifications
 * **<OpenSearch_Master_Username>** --> OpenSearch master username
 * **<OpenSearch_Master_User_Password>** --> OpenSearch master user password. The password needs to comply with the below requirements
@@ -159,26 +164,24 @@ ParameterKey=OpenSearchMasterPassword,ParameterValue=<OpenSearch_Master_User_Pas
 --stack-name <Stack_name>
 ```
 
-The stack will take approximately 30 minutes to deploy.
+The stack will approximately take 30 minutes to deploy.
 
 
 ### Enable solution
 
-1. Using AWS CLI, run the following command to start generating synthetic transaction data:
+Using AWS CLI, 
 
-Replace:
+1. To start generating synthetic transaction data:
 
-* **<EventBridge_rule_name>** --> The command can be retrieved from the Ouptut tab in CloudFormation console. Copy the value for *EnableEventRule* Key.
+    * Run the command that can be retrieved from the value of **EnableEventRule** Key in Ouptut tab in CloudFormation console, it looks like
 
 ```
 aws events enable-rule --name <EventBridge_rule_name>
 ```
 
-2. Now run the following command to start consuming the processed transactions and sending email notifications:
+2. To start consuming the processed transactions and sending email notifications:
 
-Replace:
-
-* **<Event_Source_mapping_UUID>** --> The command can be retrieved from the Ouptut tab in CloudFormation console. Copy the value for *EnableEventSourceMapping* Key.
+    * Run the command that can be retrieved from the value of **Event_Source_mapping_UUID** Key in Ouptut tab in CloudFormation console, it looks like
 
 ```
 aws lambda update-event-source-mapping --uuid <Event_Source_mapping_UUID> --enabled
