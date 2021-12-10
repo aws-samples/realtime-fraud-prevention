@@ -120,9 +120,24 @@ aws s3 mb s3://<S3_Bucket_name> --region <Amazon_Fraud_Detector_Region>
 aws s3 sync ./Artifacts/ s3://<S3_Bucket_name>
 ```
 
-### Deploy solution
+## Deploy solution
 
 1. Run the following command to deploy the CloudFormation template
+Replace:
+
+* **<S3_Bucket_name>** --> The bucket you created earlier
+* **<Amazon_Fraud_Detector_Entity_Type>** --> Entity type name in Amazon Fraud Detector. E.g *customer*
+* **<Amazon_Fraud_Detector_Event_Name>** --> Event type name in Amazon Fraud Detector. E.g *transaction*
+* **<Amazon_Fraud_Detector_Name>** --> Entity type name in Amazon Fraud Detector. E.g *transaction_event*
+* **<MSK_Input_Topic_Name>** --> Input Kafka topic name. E.g *transactions*
+* **<MSK_Output_Topic_Name>** --> Output Kafka topic name. E.g *processed_transactions*. **Use the default name if you are planning on using the pre-created dashboard.**
+* **<Email_Address_For_Notifications>** --> Email to receive email notifications
+* **<OpenSearch_Master_Username>** --> OpenSearch master username
+* **<OpenSearch_Master_User_Password>** --> OpenSearch master user password. The password needs to comply with the below requirements
+    * Minimum 8 characters long.
+    * Contains at least one uppercase letter, one lowercase letter, one digit, and one special character.
+* **<Amazon_Fraud_Detector_Region>** -->the region used to deploy Amazon Fraud Detector. E.g. eu-west-1
+* **<Stack_name>** CloudFormation stack name. The stack name must satisfy regular expression pattern: [a-z][a-z0-9\-]+. For example; *fraudblog-1*
 
 ```
 
@@ -141,60 +156,34 @@ ParameterKey=OpenSearchMasterPassword,ParameterValue=<OpenSearch_Master_User_Pas
 --capabilities CAPABILITY_NAMED_IAM \
 --region <Amazon_Fraud_Detector_Region> \
 --stack-name <Stack_name>
-
 ```
-Replace:
-
-* **<S3_Bucket_name>** --> The bucket you created earlier
-* **<Amazon_Fraud_Detector_Entity_Type>** --> Entity type name in Amazon Fraud Detector. E.g *customer*
-* **<Amazon_Fraud_Detector_Event_Name>** --> Event type name in Amazon Fraud Detector. E.g *transaction*
-* **<Amazon_Fraud_Detector_Name>** --> Entity type name in Amazon Fraud Detector. E.g *transaction_event*
-* **<MSK_Input_Topic_Name>** --> Input Kafka topic name. E.g *transactions*
-* **<MSK_Output_Topic_Name>** --> Output Kafka topic name. E.g *processed_transactions*. **Use the default name if you are planning on using the pre-created dashboard.**
-* **<Email_Address_For_Notifications>** --> Email to receive email notifications
-* **<OpenSearch_Master_Username>** --> OpenSearch master username
-* **<OpenSearch_Master_User_Password>** --> OpenSearch master user password. The password needs to comply with the below requirements
-    * Minimum 8 characters long.
-    * Contains at least one uppercase letter, one lowercase letter, one digit, and one special character.
-* **<Amazon_Fraud_Detector_Region>** -->the region used to deploy Amazon Fraud Detector. E.g. eu-west-1
-* **<Stack_name>** CloudFormation stack name. The stack name must satisfy regular expression pattern: [a-z][a-z0-9\-]+. For example; *fraudblog-1*
-
 
 The stack will take approximately 30 minutes to deploy.
 
-
-## Post Deployment 
 
 ### Enable solution
 
 1. Using AWS CLI, run the following command to start generating synthetic transaction data:
 
-```
-
-aws events enable-rule --name <EventBridge_rule_name>
-
-```
-
 Replace:
 
 * **<EventBridge_rule_name>** --> The command can be retrieved from the Ouptut tab in CloudFormation console. Copy the value for *EnableEventRule* Key.
 
+```
+aws events enable-rule --name <EventBridge_rule_name>
+```
 
 2. Now run the following command to start consuming the processed transactions and sending email notifications:
-
-```
-
-aws lambda update-event-source-mapping --uuid <Event_Source_mapping_UUID> --enabled
-
-
-```
 
 Replace:
 
 * **<Event_Source_mapping_UUID>** --> The command can be retrieved from the Ouptut tab in CloudFormation console. Copy the value for *EnableEventSourceMapping* Key.
 
+```
+aws lambda update-event-source-mapping --uuid <Event_Source_mapping_UUID> --enabled
+```
 
-### Importing pre-created OpenSearch Dashboards
+### Import pre-created OpenSearch Dashboards
 
 To import the pre-created dashboad, follow the steps below:
 
@@ -204,13 +193,16 @@ To import the pre-created dashboad, follow the steps below:
 
 ```
 
-wget https://github.com/AhmedsZamzam/realtime-fraud-prevention.git/Artifacts/dashboard.ndjson 
-
-
+wget https://github.com/aws-samples/realtime-fraud-prevention/Artifacts/dashboard.ndjson 
 ```
 
 3. Run the following command generate the appropriate authorization cookies needed to import the dashboards
 
+Replace:
+
+* **<OpenSearch_dashboard_link>** --> Opensearch Dashboard Link including the trailing */_dashboards*. Could be retrieved from the Ouptut tab in CloudFormation console. Copy the value for *OpenSearchDashboardLink* Key.
+* **<OpenSearch_Master_Username>** --> OpenSearch master username used earlier when creating the stack
+* **<OpenSearch_Master_User_Password>** --> OpenSearch master user password used earlier when creating the stack
 
 ```
 
@@ -218,14 +210,9 @@ curl -X POST <OpenSearch_dashboard_link>/auth/login \
 -H "osd-xsrf: true" -H "content-type:application/json" \
 -d '{"username":"<OpenSearch_Master_Username>", "password" : "<OpenSearch_Master_User_Password>"} ' \
 -c auth.txt
-
 ```
 
-Replace:
 
-* **<OpenSearch_dashboard_link>** --> Opensearch Dashboard Link including the trailing */_dashboards*. Could be retrieved from the Ouptut tab in CloudFormation console. Copy the value for *OpenSearchDashboardLink* Key.
-* **<OpenSearch_Master_Username>** --> OpenSearch master username used earlier when creating the stack
-* **<OpenSearch_Master_User_Password>** --> OpenSearch master user password used earlier when creating the stack
 
 3. Run the following command generate the appropriate authorization cookies needed to import the dashboards
 
@@ -243,7 +230,7 @@ Replace:
 4. Now the dashboard is imported
 
 
-#### Accessing OpenSearch Dashboards
+## Accessing OpenSearch Dashboards
 
 OpenSearch is created in a private VPC. Therefore to access OpenSearch Dashboards, you will need to create a [Windows jump server](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/EC2_GetStarted.html). 
 
