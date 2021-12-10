@@ -91,7 +91,7 @@ zip -r ./Artifacts/RealTimeFraudPrevention.zip ./RealTimeFraudPrevention
 
 This will:
 Install required dependencies for the Apache Flink application as per requirements.txt file.
-And Package all artifacts into RealTimeFraudPrevention.zip file that will be created under the Artifacts directory. 
+Then package all artifacts into RealTimeFraudPrevention.zip file that will be created under the Artifacts directory. 
 
 ### Download Kafka connector
 
