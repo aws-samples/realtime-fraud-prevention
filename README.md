@@ -84,7 +84,7 @@ python3 -m venv ./RealTimeFraudPrevention
 
 ./RealTimeFraudPrevention/bin/pip3 install -r ./RealTimeFraudPrevention/bin/requirements.txt -t ./RealTimeFraudPrevention/lib/packages
 
-wget https://repo.maven.apache.org/maven2/org/apache/flink/flink-sql-connector-kafka_2.11/1.11.2/flink-sql-connector-kafka_2.11-1.11.2.jar -P ./RealTimeFraudPrevention/lib
+curl https://repo.maven.apache.org/maven2/org/apache/flink/flink-sql-connector-kafka_2.11/1.11.2/flink-sql-connector-kafka_2.11-1.11.2.jar --output ./RealTimeFraudPrevention/lib/flink-sql-connector-kafka_2.11-1.11.2.jar
 
 zip -r ./Artifacts/RealTimeFraudPrevention.zip ./RealTimeFraudPrevention
 ```
