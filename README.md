@@ -66,14 +66,15 @@ cd realtime-fraud-prevention
 
 ### Install Lambda functions dependencies and package code
 
-1. Install required dependencies for the Lambda functions as per requirements.txt file.
-2. Package all artifacts into lambda-functions.zip file that will be created under the Artifacts directory. 
-
 ```bash
 pip3 install -r ./lambda-functions/requirements.txt -t ./lambda-functions
 
 (cd lambda-functions; zip -r ../Artifacts/lambda-functions.zip .)
 ```
+
+This will:
+Install required dependencies for the Lambda functions as per requirements.txt file.
+Then package all artifacts into lambda-functions.zip file that will be created under the Artifacts directory. 
 
 ### Install Kinesis Data Analytics PyFlink application dependencies and package code
 
@@ -87,6 +88,10 @@ wget https://repo.maven.apache.org/maven2/org/apache/flink/flink-sql-connector-k
 
 zip -r ./Artifacts/RealTimeFraudPrevention.zip ./RealTimeFraudPrevention
 ```
+
+This will:
+Install required dependencies for the Apache Flink application as per requirements.txt file.
+And Package all artifacts into RealTimeFraudPrevention.zip file that will be created under the Artifacts directory. 
 
 ### Download Kafka connector
 
