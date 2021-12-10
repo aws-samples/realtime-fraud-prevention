@@ -53,7 +53,7 @@ The template deploys:
     * 'customer_job' - Optional
     * 'phone' - Optional
 
-## Installation Instructions
+## Package and upload solution artifacts.
 
 1. Clone the repo onto your local development machine using `git clone <repo url>`.
 2. Change directory to solution repository.
