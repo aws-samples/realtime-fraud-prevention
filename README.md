@@ -169,7 +169,7 @@ The stack will approximately take 30 minutes to deploy.
 
 ### Enable solution
 
-Using AWS CLI, 
+Using AWS CLI, make sure you are at the same region used while deployment.
 
 1. To start generating synthetic transaction data:
 
