@@ -78,10 +78,7 @@ Then package all artifacts into lambda-functions.zip file that will be created u
 ### Install Kinesis Data Analytics PyFlink application dependencies and package code
 
 ```bash
-
-python3 -m venv ./RealTimeFraudPrevention
-
-./RealTimeFraudPrevention/bin/pip3 install -r ./RealTimeFraudPrevention/bin/requirements.txt -t ./RealTimeFraudPrevention/lib/packages
+pip3 install -r ./RealTimeFraudPrevention/bin/requirements.txt -t ./RealTimeFraudPrevention/lib/packages
 
 curl https://repo.maven.apache.org/maven2/org/apache/flink/flink-sql-connector-kafka_2.11/1.11.2/flink-sql-connector-kafka_2.11-1.11.2.jar --output ./RealTimeFraudPrevention/lib/flink-sql-connector-kafka_2.11-1.11.2.jar
 
