@@ -110,7 +110,9 @@ aws s3 mb s3://<S3_Bucket_name> --region <Amazon_Fraud_Detector_Region>
 ```
 
 
-2. Run the following command to sync the solution artifacts with the newly created buckets
+2. Run the following command to sync the solution artifacts with the newly created buckets. 
+
+**Note: All artifacts should be stored on the bucket root**
 
 ```
 
@@ -152,7 +154,7 @@ ParameterKey=FraudDetectorName,ParameterValue=<Amazon_Fraud_Detector_Name> \
 ParameterKey=KafkaInputTopic,ParameterValue=<MSK_Input_Topic_Name> \
 ParameterKey=KafkaOutputTopic,ParameterValue=<MSK_Output_Topic_Name> \
 ParameterKey=S3SourceCodePath,ParameterValue=lambda-functions.zip \
-ParameterKey=S3connectorPath,ParameterValue=confluentinc-kafka-connect-elasticsearch-11.1.3.zip \
+ParameterKey=S3connectorPath,ParameterValue=confluentinc-kafka-connect-elasticsearch-11.1.6.zip \
 ParameterKey=YourEmail,ParameterValue=<Email_Address_For_Notifications> \
 ParameterKey=OpenSearchMasterUsername,ParameterValue=<OpenSearch_Master_Username> \
 ParameterKey=OpenSearchMasterPassword,ParameterValue=<OpenSearch_Master_User_Password>  \
