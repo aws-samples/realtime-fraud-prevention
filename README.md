@@ -7,10 +7,10 @@ The template deploys:
 1. Sample transaction producer running as an [AWS Lambda Function](https://aws.amazon.com/lambda/). The function is scheduled to run every minute generating 30 transactions per minute.
 2. [Amazon Managed Streaming for Apache Kafka (MSK)](https://aws.amazon.com/msk/) cluster, that contains 2 topics with default names of *transactions* and *processed_transactions*. Both topics will be automatically created by the producer and the stream processor.
 3. PyFlink stream processing job that runs as an [Amazon Kinesis Data Analytics](https://aws.amazon.com/kinesis/data-analytics/) application. The job consumes each transaction as soon as it is written to the *transactions* (input) topic, invokes [Amazon Fraud Detector](https://aws.amazon.com/fraud-detector/) APIs ([GetEventPrediction](https://docs.aws.amazon.com/frauddetector/latest/api/API_GetEventPrediction.html)) in real time to generate fraud predictions and writes the outcome to *processed_transactions* (output) topic.
-4. Consumer Lambda function reads data from *processed_transactions* topic and sends email notifications for blocked transactions.
-5. Sink Kafka connector running on [MSK Connect](https://aws.amazon.com/msk/features/msk-connect/) that reads processed transactions from *processed_transactions* topic and sinks the data to an OpenSearch index. Allowing us to visualise the transactions in real time.
-6. Private [Amazon OpenSearch Service (successor to Amazon Elasticsearch Service)](https://aws.amazon.com/opensearch-service/) domain in a provisioned VPC
-7. An [AWS Cloud9](https://aws.amazon.com/cloud9/) environment to import a pre-created dashboard to OpenSearch Dashboards
+4. Consumer Lambda function reads data from *processed_transactions* topic and sends email notifications for transactions flagged as fraudulent by Amazon Fraud Detector.
+5. Private [Amazon OpenSearch Service (successor to Amazon Elasticsearch Service)](https://aws.amazon.com/opensearch-service/) domain in a provisioned VPC. it is used to persistently stores each transaction with its corresponding fraud outcome.
+6. Kafka connector running on [MSK Connect](https://aws.amazon.com/msk/features/msk-connect/) that reads processed transactions from *processed_transactions* topic and sinks the data to an OpenSearch index. Allowing us to visualise the transactions insights in real time.
+7. An [AWS Cloud9](https://aws.amazon.com/cloud9/) environment to import the pre-created dashboard to OpenSearch Dashboards.
 
 
 
