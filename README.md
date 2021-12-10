@@ -123,6 +123,7 @@ aws s3 sync ./Artifacts/ s3://<S3_Bucket_name>
 ## Deploy solution
 
 1. Run the following command to deploy the CloudFormation template
+
 Replace:
 
 * **<S3_Bucket_name>** --> The bucket you created earlier
@@ -193,7 +194,7 @@ To import the pre-created dashboad, follow the steps below:
 
 ```
 
-wget https://github.com/aws-samples/realtime-fraud-prevention/Artifacts/dashboard.ndjson 
+wget https://github.com/aws-samples/realtime-fraud-prevention/blob/main/Artifacts/dashboard.ndjson
 ```
 
 3. Run the following command generate the appropriate authorization cookies needed to import the dashboards
