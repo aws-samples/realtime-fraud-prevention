@@ -232,7 +232,7 @@ curl -XPOST <OpenSearch_dashboard_link>/api/saved_objects/_import \
 
 ## Accessing OpenSearch Dashboards
 
-OpenSearch is created in a private VPC. Therefore to access OpenSearch Dashboards, you will need to create a [Windows jump server](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/EC2_GetStarted.html). 
+OpenSearch is created in a private VPC. Therefore to access OpenSearch Dashboards, you will need to create a [Windows jump server](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/EC2_GetStarted.html) **in the public subnet of the provisioned VPC**. 
 
 ## Security
 
