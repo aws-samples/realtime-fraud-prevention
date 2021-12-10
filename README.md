@@ -93,7 +93,7 @@ Then package all artifacts into RealTimeFraudPrevention.zip file that will be cr
 
 ```bash
 
-(cd Artifacts; curl -L -O https://d1i4a15mxbxib1.cloudfront.net/api/plugins/confluentinc/confluentinc-kafka-connect-elasticsearch-11.1.3.zip)
+(cd Artifacts; curl -L -O https://d1i4a15mxbxib1.cloudfront.net/api/plugins/confluentinc/kafka-connect-elasticsearch/versions/11.1.6/confluentinc-kafka-connect-elasticsearch-11.1.6.zip)
 ```
 
 ### Upload solution artifacts
