@@ -33,9 +33,9 @@ The template deploys:
 
 ## General Requirements
 
-* [Install Python](https://realpython.com/installing-python/) 3.8.2 or later
-* AWS CLI already configured with Administrator permission
-* Amazon Fraud Detector published with the following below variable names, follow [this blog](https://aws.amazon.com/blogs/machine-learning/detect-online-transaction-fraud-with-new-amazon-fraud-detector-features/) as a reference
+1. [Install Python](https://realpython.com/installing-python/) 3.8.2 or later
+2. AWS CLI already configured with Administrator permission
+3. Amazon Fraud Detector published with the following below variable names, follow [this blog](https://aws.amazon.com/blogs/machine-learning/detect-online-transaction-fraud-with-new-amazon-fraud-detector-features/) as a reference
     * 'order_price' - Manadatory 
     * 'customer_email' - Mandatory
     * 'ip_address' - Mandatory
@@ -107,7 +107,7 @@ Then package all artifacts into RealTimeFraudPrevention.zip file that will be cr
 
 Replace:
 * **<S3_Bucket_name>** with your unique bucket name and 
-* **<Amazon_Fraud_Detector_Region>** with the region used to deploy Amazon Fraud Detector model in the pre-requirements. E.g. *eu-west-1* 
+* **<Amazon_Fraud_Detector_Region>** with the region used to deploy the Amazon Fraud Detector model ([requirement #3](https://github.com/aws-samples/realtime-fraud-prevention/blob/main/README.md#general-requirements) above). E.g. *eu-west-1* 
 
 ```
 
