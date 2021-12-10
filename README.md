@@ -136,7 +136,7 @@ Replace:
 * **<OpenSearch_Master_Username>** --> OpenSearch master username
 * **<OpenSearch_Master_User_Password>** --> OpenSearch master user password. The password needs to comply with the below requirements
     * Minimum 8 characters long.
-    * Contains at least one uppercase letter, one lowercase letter, one digit, and one special character.
+    * Contains at least one uppercase letter, one lowercase letter, one digit, and one of the following special characters ```+_-@^%=!£#<>.```.
 * **<Amazon_Fraud_Detector_Region>** -->the region used to deploy Amazon Fraud Detector. E.g. eu-west-1
 * **<Stack_name>** CloudFormation stack name. The stack name must satisfy regular expression pattern: [a-z][a-z0-9\-]+. For example; *fraudblog-1*
 
