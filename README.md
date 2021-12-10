@@ -200,13 +200,13 @@ To import the pre-created dashboad, follow the steps below:
 wget https://github.com/aws-samples/realtime-fraud-prevention/blob/main/Artifacts/dashboard.ndjson
 ```
 
-3. Run the following command generate the appropriate authorization cookies needed to import the dashboards
+3. Run the following command to generate the appropriate authorization cookies needed to import the dashboards
 
 Replace:
 
-* **<OpenSearch_dashboard_link>** --> Opensearch Dashboard Link including the trailing */_dashboards*. Could be retrieved from the Ouptut tab in CloudFormation console. Copy the value for *OpenSearchDashboardLink* Key.
-* **<OpenSearch_Master_Username>** --> OpenSearch master username used earlier when creating the stack
-* **<OpenSearch_Master_User_Password>** --> OpenSearch master user password used earlier when creating the stack
+* **<OpenSearch_dashboard_link>** --> Could be retrieved from the Ouptut tab in CloudFormation console. Copy the value for *OpenSearchDashboardLink* Key, including the trailing */_dashboards*.
+* **<OpenSearch_Master_Username>** --> OpenSearch master username used earlier while deploying [the stack](https://github.com/aws-samples/realtime-fraud-prevention#deploy-solution).
+* **<OpenSearch_Master_User_Password>** --> OpenSearch master user password used earlier while deploying [the stack](https://github.com/aws-samples/realtime-fraud-prevention#deploy-solution).
 
 ```
 
@@ -218,20 +218,17 @@ curl -X POST <OpenSearch_dashboard_link>/auth/login \
 
 
 
-3. Run the following command generate the appropriate authorization cookies needed to import the dashboards
+3. Run the following command that will import the dashboards
 
+Replace:
+
+* **<OpenSearch_dashboard_link>** --> Could be retrieved from the Ouptut tab in CloudFormation console. Copy the value for *OpenSearchDashboardLink* Key, including the trailing */_dashboards*.
 
 ```
 
 curl -XPOST <OpenSearch_dashboard_link>/api/saved_objects/_import \
 -H "osd-xsrf:true" -b auth.txt --form file=@dashboard.ndjson
 ```
- 
-Replace:
-
-* **<OpenSearch_dashboard_link>** --> Opensearch Dashboard Link
-
-4. Now the dashboard is imported
 
 
 ## Accessing OpenSearch Dashboards
