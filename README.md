@@ -56,7 +56,7 @@ The template deploys:
 ## Installation Instructions
 
 1. Clone the repo onto your local development machine using `git clone <repo url>`.
-2. Change directory to solution repo
+2. Change directory to solution repository.
 
 ```
 
@@ -64,8 +64,10 @@ cd realtime-fraud-prevention
 
 ```
 
-
 ### Install Lambda functions dependencies and package code
+
+1. Install required dependencies for the Lambda functions as per requirements.txt file.
+2. Package all artifacts into lambda-functions.zip file that will be created under the Artifacts directory. 
 
 ```bash
 pip3 install -r ./lambda-functions/requirements.txt -t ./lambda-functions
