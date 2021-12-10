@@ -103,16 +103,18 @@ Then package all artifacts into RealTimeFraudPrevention.zip file that will be cr
 
 ### Upload solution artifacts
 
-1. Run the following command to create a unique Amazon S3 bucket which will be used to store the solution artifacts. 
+1. Run the following command to create a unique Amazon S3 bucket which will be used to store the solution artifacts.
+
+Replace:
+* **<S3_Bucket_name>** with your unique bucket name and 
+* **<Amazon_Fraud_Detector_Region>** with the region used to deploy Amazon Fraud Detector model in the pre-requirements. E.g. *eu-west-1* 
 
 ```
 
 aws s3 mb s3://<S3_Bucket_name> --region <Amazon_Fraud_Detector_Region>
 
 ```
-Replace:
-* **<S3_Bucket_name>** with your unique bucket name and 
-* **<Amazon_Fraud_Detector_Region>** with the region used to deploy Amazon Fraud Detector. E.g. *eu-west-1*
+
 
 2. Run the following command to sync the solution artifacts with the newly created buckets
 
