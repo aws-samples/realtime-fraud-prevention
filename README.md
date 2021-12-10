@@ -181,7 +181,7 @@ aws events enable-rule --name <EventBridge_rule_name>
 
 2. To start consuming the processed transactions and sending email notifications:
 
-    * Run the command that can be retrieved from the value of **Event_Source_mapping_UUID** Key in Ouptut tab in CloudFormation console, it looks like
+    * Run the command that can be retrieved from the value of **EnableEventSourceMapping** Key in Ouptut tab in CloudFormation console, it looks like
 
 ```
 aws lambda update-event-source-mapping --uuid <Event_Source_mapping_UUID> --enabled
