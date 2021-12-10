@@ -61,7 +61,6 @@ The template deploys:
 ```
 
 cd realtime-fraud-prevention
-
 ```
 
 ### Install Lambda functions dependencies and package code
@@ -98,7 +97,6 @@ Then package all artifacts into RealTimeFraudPrevention.zip file that will be cr
 ```bash
 
 (cd Artifacts; curl -L -O https://d1i4a15mxbxib1.cloudfront.net/api/plugins/confluentinc/confluentinc-kafka-connect-elasticsearch-11.1.3.zip)
-
 ```
 
 ### Upload solution artifacts
@@ -112,7 +110,6 @@ Replace:
 ```
 
 aws s3 mb s3://<S3_Bucket_name> --region <Amazon_Fraud_Detector_Region>
-
 ```
 
 
@@ -121,7 +118,6 @@ aws s3 mb s3://<S3_Bucket_name> --region <Amazon_Fraud_Detector_Region>
 ```
 
 aws s3 sync ./Artifacts/ s3://<S3_Bucket_name>
-
 ```
 
 ### Deploy solution
@@ -238,7 +234,6 @@ Replace:
 
 curl -XPOST <OpenSearch_dashboard_link>/api/saved_objects/_import \
 -H "osd-xsrf:true" -b auth.txt --form file=@dashboard.ndjson
-
 ```
  
 Replace:
