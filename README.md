@@ -234,18 +234,14 @@ curl -XPOST <OpenSearch_dashboard_link>/api/saved_objects/_import \
 
 OpenSearch is created in a private VPC. Therefore to access OpenSearch Dashboards, you will need to create a [Windows jump server](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/EC2_GetStarted.html) **in the public subnet of the provisioned VPC**. 
 
-1. Open the Amazon Virtual Private Cloud (VPC) console at [https://console.aws.amazon.com/vpc/](https://console.aws.amazon.com/vpc/)
-    * Make sure you are in the correct AWS region used to deploy the solution.
-2. From the console dashboard, choose Subnets.
-    * Note down the Subnet ID for the public subnet of the provisioned VPC, it will have <CloudFormation Stack Name>-public-subnet.
-3. Now, Open the Amazon EC2 console at [https://console.aws.amazon.com/vpc/](https://console.aws.amazon.com/vpc/)
-4. From the console dashboard, choose Launch Instance.
-5. Step 1: Choose an Amazon Machine Image (AMI)
+1. Open the Amazon EC2 console at [https://console.aws.amazon.com/ec2/](https://console.aws.amazon.com/ec2/)
+2. From the console dashboard, choose Launch Instance.
+3. Step 1: Choose an Amazon Machine Image (AMI)
     * Select Microsoft Windows Server 2019 Base. Notice that these AMI is marked "Free tier eligible."
-6. Step 2: Choose an Instance Type
+4. Step 2: Choose an Instance Type
     * Select The t2.micro instance type is eligible for the free tier. 
     * In Regions where t2.micro is unavailable, you can use a t3.micro instance under the free tier.
-7. Step 3: Configure Instance Details
+5. Step 3: Configure Instance Details
     * Network: Select the provisioned VPC, it will have vpc_<ID> | <CloudFormation Stack Name>
     * Subnet: Select the public subnet of the provisioned VPC, it will have subnet_<ID> | <CloudFormation Stack Name>-public-subnet.
     * Scroll down and expand Advanced Details: in User data, paste the following command to install Google Chrome.
@@ -256,22 +252,23 @@ $Path = $env:TEMP; $Installer = "chrome_installer.exe"; Invoke-WebRequest "http:
 </powershell>
 ```
   
-8. Click Review and Launch then Launch.
-9. When prompted for a key pair, select create a new pair
+6. Click Review and Launch then Launch.
+7. When prompted for a key pair, select create a new pair
       * Key pair type: Choose RSA.
       * Key pair name: Give a name for the key.
       * Download Key Pair, Save .pem file in a safe location in your local machine.
       * Then Launch Instances.
-10. Click View Instances, It can take a few minutes for the instance to be ready so that you can connect to it. Check that your instance has passed its status checks.
+8. Click View Instances, It can take a few minutes for the instance to be ready so that you can connect to it. Check that your instance has passed its status checks.
 
-11. Follow the the instructions in the [connection tutorial to connect to your Windows instance using an RDP client](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/EC2_GetStarted.html#ec2-connect-to-instance-windows)
+9. Follow the instructions in the [connect to EC2 instance tutorial to connect to your Windows instance using an RDP client](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/EC2_GetStarted.html#ec2-connect-to-instance-windows)
   
-12. Open Google Chrome and paste the link of the OpenSearchDashboard that can be retrieved from the value of **OpenSearchDashboardLink** Key in Ouptut tab in CloudFormation console, it will look like https://vpc-<opensearch_name>-<opensearch_ID>.<region>.es.amazonaws.com/_dashboards
+10. Open Google Chrome and paste the link of the OpenSearchDashboard that can be retrieved from the value of **OpenSearchDashboardLink** Key in Ouptut tab in CloudFormation console, it will look like https://vpc-<opensearch_name>-<opensearch_ID>.<region>.es.amazonaws.com/_dashboards
   
-13. On the OpenSearch login console, enter the Username and Password used while creating CloudFormation Template
+11. On the OpenSearch login console, enter the Username and Password used while creating CloudFormation Template
   * **<OpenSearch_Master_Username>** --> OpenSearch master username.
   * **<OpenSearch_Master_User_Password>** --> OpenSearch master user password.
 
+12. Follow the instructions in the [clean EC2 instance tutorial to effectively terminate an instance which also deletes it](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/EC2_GetStarted.html#ec2-clean-up-your-instance)
 
   ## Security
 
