@@ -234,7 +234,40 @@ curl -XPOST <OpenSearch_dashboard_link>/api/saved_objects/_import \
 
 OpenSearch is created in a private VPC. Therefore to access OpenSearch Dashboards, you will need to create a [Windows jump server](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/EC2_GetStarted.html) **in the public subnet of the provisioned VPC**. 
 
-## Security
+1. Open the Amazon Virtual Private Cloud (VPC) console at [https://console.aws.amazon.com/vpc/](https://console.aws.amazon.com/vpc/)
+    * Make sure you are in the correct AWS region used to deploy the solution.
+2. From the console dashboard, choose Subnets.
+    * Note down the Subnet ID for the public subnet of the provisioned VPC, it will have <CloudFormation Stack Name>-public-subnet.
+3. Now, Open the Amazon EC2 console at [https://console.aws.amazon.com/vpc/](https://console.aws.amazon.com/vpc/)
+4. From the console dashboard, choose Launch Instance.
+5. Step 1: Choose an Amazon Machine Image (AMI)
+    * Select Microsoft Windows Server 2019 Base. Notice that these AMI is marked "Free tier eligible."
+6. Step 2: Choose an Instance Type
+    * Select The t2.micro instance type is eligible for the free tier. 
+    * In Regions where t2.micro is unavailable, you can use a t3.micro instance under the free tier.
+7. Step 3: Configure Instance Details
+    * Network: Select the provisioned VPC, it will have vpc_<ID> | <CloudFormation Stack Name>
+    * Subnet: Select the public subnet of the provisioned VPC, it will have subnet_<ID> | <CloudFormation Stack Name>-public-subnet.
+    * Scroll down and expand Advanced Details: in User data, paste the following command to install Google Chrome.
+```
+
+<powershell>
+$Path = $env:TEMP; $Installer = "chrome_installer.exe"; Invoke-WebRequest "http://dl.google.com/chrome/chrome_installer.exe" -OutFile $Path\$Installer; Start-Process -FilePath $Path\$Installer -Args "/silent /install" -Verb RunAs -Wait; Remove-Item $Path\$Installer
+</powershell>
+```
+  
+8. Click Review and Launch then Launch.
+9. When prompted for a key pair, select create a new pair
+      * Key pair type: Choose RSA.
+      * Key pair name: Give a name for the key.
+      * Download Key Pair, Save .pem file in a safe location in your local machine.
+      * Then Launch Instances.
+10. Click View Instances, It can take a few minutes for the instance to be ready so that you can connect to it. Check that your instance has passed its status checks.
+
+11. Follow the the instructions in the [connection tutorial to connect to your Windows instance using an RDP client](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/EC2_GetStarted.html#ec2-connect-to-instance-windows)
+
+
+  ## Security
 
 See [CONTRIBUTING](CONTRIBUTING.md#security-issue-notifications) for more information.
 
