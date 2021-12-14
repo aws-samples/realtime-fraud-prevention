@@ -263,7 +263,7 @@ $Path = $env:TEMP; $Installer = "chrome_installer.exe"; Invoke-WebRequest "http:
 
 9. Follow the instructions in the [connect to EC2 instance tutorial to connect to your Windows instance using an RDP client](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/EC2_GetStarted.html#ec2-connect-to-instance-windows)
   
-10. Open Google Chrome and paste the link of the OpenSearchDashboard that can be retrieved from the value of **OpenSearchDashboardLink** Key in Ouptut tab in CloudFormation console, it will look like https://vpc-<opensearch_name>-<opensearch_ID>.<region>.es.amazonaws.com/_dashboards
+10. Open Google Chrome and paste the link of the OpenSearchDashboard that can be retrieved from the value of **OpenSearchDashboardLink** Key in Ouptut tab in CloudFormation console, it will look like ```https://vpc-<opensearch_name>-<opensearch_ID>.<region>.es.amazonaws.com/_dashboards```
   
 11. On the OpenSearch login console, enter the Username and Password used while creating CloudFormation Template
   * **<OpenSearch_Master_Username>** --> OpenSearch master username.
