@@ -270,7 +270,7 @@ $Path = $env:TEMP; $Installer = "chrome_installer.exe"; Invoke-WebRequest "http:
     * **<OpenSearch_Master_User_Password>** --> OpenSearch master user password.
 
 12. In the navigation pane, choose Dashboard. 
-A new sample fraud detection dashboard opens, which is updated in real time.![image](https://user-images.githubusercontent.com/31252819/146217143-5ab7c0bc-a3f4-45c1-98d3-51dd8e30ebd0.png)
+A new sample fraud detection dashboard opens, which is updated in real time.
 
 
 13. Follow the instructions in the [clean EC2 instance tutorial to effectively terminate an instance which also deletes it](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/EC2_GetStarted.html#ec2-clean-up-your-instance)
