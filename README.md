@@ -1,7 +1,7 @@
 #  Real time Fraud Prevention and Visualisation using Amazon Fraud Detector
 
   
-This repository accompanies the [Real time Fraud Prevention and Visualisation using Amazon Fraud Detector](https://aws.amazon.com/blogs/big-data/) blog post. It contains **one** [AWS Cloudformation](https://aws.amazon.com/cloudformation/) template. 
+This repository accompanies the [Build and visualize a real-time fraud prevention system using Amazon Fraud Detector](https://aws.amazon.com/blogs/machine-learning/build-and-visualize-a-real-time-fraud-prevention-system-using-amazon-fraud-detector/) blog post. It contains **one** [AWS Cloudformation](https://aws.amazon.com/cloudformation/) template. 
 
 The template deploys:
 1. Sample transaction producer running as an [AWS Lambda Function](https://aws.amazon.com/lambda/). The function is scheduled to run every minute generating 30 transactions per minute.
