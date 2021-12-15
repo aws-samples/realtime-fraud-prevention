@@ -123,8 +123,8 @@ aws s3 sync ./Artifacts/ s3://<S3_Bucket_name>
 
 There are 2 options to deploy the solution:
 1. Using AWS Console
-    * Follow Build and visualise Realtime Fraud Prevention system using Amazon Fraud Detector.
-3. Using AWS CLI
+    * Follow [Build and visualise Realtime Fraud Prevention system using Amazon Fraud Detector](https://aws.amazon.com/blogs/machine-learning/build-and-visualize-a-real-time-fraud-prevention-system-using-amazon-fraud-detector/) blog post.
+2. Using AWS CLI
     * Run the following command to deploy the CloudFormation template
 
 Replace:
