@@ -130,7 +130,7 @@ There are 2 options to deploy the solution:
 Replace:
 
 * **<S3_Bucket_name>** --> The bucket you created in the upload solution artifacts step above.
-* The Amazon Fraud Detector Model Output Parameters created following ([requirement #3](https://github.com/aws-samples/realtime-fraud-prevention/blob/main/README.md#general-requirements) above)
+* The Amazon Fraud Detector Model Output Parameters created following ([requirement #3](https://github.com/aws-samples/realtime-fraud-prevention#package-and-upload-solution-artifacts) above)
     * **<Amazon_Fraud_Detector_Entity_Type>** --> Entity type name in Amazon Fraud Detector. E.g *customer*
     * **<Amazon_Fraud_Detector_Event_Name>** --> Event type name in Amazon Fraud Detector. E.g *transaction*
     * **<Amazon_Fraud_Detector_Name>** --> Entity type name in Amazon Fraud Detector. E.g *transaction_event*
@@ -232,7 +232,7 @@ curl -XPOST <OpenSearch_dashboard_link>/api/saved_objects/_import \
 
 ## Accessing OpenSearch Dashboards
 
-OpenSearch is created in a private VPC. Therefore to access OpenSearch Dashboards, you will need to create a [Windows jump server](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/EC2_GetStarted.html) **in the public subnet of the provisioned VPC**. 
+OpenSearch is created in a private VPC. Therefore to access OpenSearch Dashboards, you will need to create a Windows jump server **in the public subnet of the provisioned VPC**. 
 
 1. Open the Amazon EC2 console at [https://console.aws.amazon.com/ec2/](https://console.aws.amazon.com/ec2/)
     * Make sure you are at the correct AWS region, used earlier to deploy the solution.
