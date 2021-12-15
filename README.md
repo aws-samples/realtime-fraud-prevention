@@ -266,10 +266,14 @@ $Path = $env:TEMP; $Installer = "chrome_installer.exe"; Invoke-WebRequest "http:
 10. Open Google Chrome and paste the link of the OpenSearchDashboard that can be retrieved from the value of **OpenSearchDashboardLink** Key in Ouptut tab in CloudFormation console, it will look like ```https://vpc-<opensearch_name>-<opensearch_ID>.<region>.es.amazonaws.com/_dashboards```
   
 11. On the OpenSearch login console, enter the Username and Password used while creating CloudFormation Template
-  * **<OpenSearch_Master_Username>** --> OpenSearch master username.
-  * **<OpenSearch_Master_User_Password>** --> OpenSearch master user password.
+    * **<OpenSearch_Master_Username>** --> OpenSearch master username.
+    * **<OpenSearch_Master_User_Password>** --> OpenSearch master user password.
 
-12. Follow the instructions in the [clean EC2 instance tutorial to effectively terminate an instance which also deletes it](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/EC2_GetStarted.html#ec2-clean-up-your-instance)
+12. In the navigation pane, choose Dashboard. 
+A new sample fraud detection dashboard opens, which is updated in real time.![image](https://user-images.githubusercontent.com/31252819/146217143-5ab7c0bc-a3f4-45c1-98d3-51dd8e30ebd0.png)
+
+
+13. Follow the instructions in the [clean EC2 instance tutorial to effectively terminate an instance which also deletes it](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/EC2_GetStarted.html#ec2-clean-up-your-instance)
 
   ## Security
 
