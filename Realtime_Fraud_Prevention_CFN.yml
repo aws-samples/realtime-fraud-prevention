@@ -5,6 +5,14 @@ Parameters:
   BucketName:
     Type: String
     Description: The bucket name where the source code zip is present
+  S3SourceCodePath:
+    Type: String
+    Description: S3 key for the zip file
+    Default: lambda-functions.zip
+  S3connectorPath:
+    Type: String
+    Description: S3 key for the connector zip file
+    Default: confluentinc-kafka-connect-elasticsearch-11.1.6.zip
   YourEmail:
     Type: String
     Description: The email that will receive notifications. E.g awsblog@example.com 
@@ -382,7 +390,8 @@ Resources:
       Code:
         S3Bucket:
           Ref: BucketName
-        S3Key: lambda-functions.zip
+        S3Key:
+          Ref: S3SourceCodePath
       Handler: fdLambdaStreamProducer.lambda_handler
       MemorySize: 128
       Role:
@@ -412,7 +421,8 @@ Resources:
       Code:
         S3Bucket:
           Ref: BucketName
-        S3Key: lambda-functions.zip
+        S3Key:
+          Ref: S3SourceCodePath
       Handler: fdLambdaConsumer.lambda_handler
       MemorySize: 128
       Role:
@@ -764,7 +774,8 @@ Resources:
       Code:
         S3Bucket:
           Ref: BucketName
-        S3Key: lambda-functions.zip
+        S3Key:
+          Ref: S3SourceCodePath
       Handler: LambdaConfig.lambda_handler
       MemorySize: 128
       Role:
@@ -791,7 +802,8 @@ Resources:
           awsRegion: !Sub "${AWS::Region}"
           s3bucketName:
             Ref: BucketName
-          s3connectorkey: confluentinc-kafka-connect-elasticsearch-11.1.6.zip
+          s3connectorkey:
+            Ref: S3connectorPath
           mskconnectRole: !GetAtt MSKConnectServiceRole.Arn
           logGroupName: !Sub "${AWS::StackName}-mskconnect"
       Runtime: python3.6
