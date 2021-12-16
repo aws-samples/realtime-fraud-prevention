@@ -34,7 +34,7 @@ The template deploys:
 ## General Requirements
 
 1. [Install Python](https://realpython.com/installing-python/) 3.8.2 or later
-2. AWS CLI already configured with Administrator permission
+2. [AWS CLI already configured](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html) with Administrator permission
 3. Amazon Fraud Detector published with the following below variable names, follow [this blog](https://aws.amazon.com/blogs/machine-learning/detect-online-transaction-fraud-with-new-amazon-fraud-detector-features/) as a reference
     * 'order_price' - Manadatory 
     * 'customer_email' - Mandatory
