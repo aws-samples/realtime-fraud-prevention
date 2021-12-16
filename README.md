@@ -142,7 +142,7 @@ Replace:
     * Minimum 8 characters long.
     * Contains at least one uppercase letter, one lowercase letter, one digit, and one of the following special characters ```+_-@^%=!£#.```.
 * **<Amazon_Fraud_Detector_Region>** -->the region used to deploy Amazon Fraud Detector. E.g. eu-west-1
-* **<Stack_name>** CloudFormation stack name. The stack name must satisfy regular expression pattern: [a-z][a-z0-9\-]+. For example; *fraudblog-1*
+* **<Stack_name>** CloudFormation stack name. The stack name must satisfy the regular expression pattern: [a-z][a-z0-9\-]+ and must be less than 15 characters long. For example; *fraud-prevention*
 
 ```
 
